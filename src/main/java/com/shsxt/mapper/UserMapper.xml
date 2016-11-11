@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 1.配置命名空间 唯一性 2.配置select 表示sql查询，内容会封装到Mapped Statement中，可以将这个select标签称为一个Statement 
+	3.id 值 Statement的编号，用于标识select中定义的sql，同一个namespace下必须唯一 4.parameterType 输入参数类型 
+	即sql 中占位符的数据类型 5.resultType 查询返回的结果集中单条记录的java类型,select查询的字段名和resultType中属性名一致，才能映射成功; 
+	6.#{id} 参数占位符 变量名为 id 或value 均可 7.${id} 字符串拼接 变量名必须为value 否则会报错 无法避免sql 注入 -->
+<mapper namespace="com.shsxt.mapper.UserMapper">
+	<select id="queryUserById" parameterType="int"
+		resultType="com.shsxt.po.User">
+		select id,userName,userPwd from user where id=#{id}
+
+	</select>
+
+</mapper>
+
